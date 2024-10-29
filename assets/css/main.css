@@ -1,0 +1,686 @@
+/* General Body Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #e0e0e0;
+    color: #222222;
+    margin: 0; /* Remove margins */
+}
+
+body section {
+    margin: 50px 200px;
+    padding: 60px 40px; /* Padding to give space around the section */
+    background: #e0e0e0; /* Background color */
+    box-shadow: 5px 5px 15px #bebebe, -5px -5px 15px #ffffff; /* Neumorphism shadow */
+    border-radius: 12px; /* Rounded corners */
+}
+
+h2 {
+    margin: auto;
+    font-family: 'YourFontFamily', sans-serif; /* Use your preferred font */
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* ****** HEADER ****** */
+header {
+    width: 100%; /* Cover full width */
+    position: sticky; /* Stick to the top */
+    top: 0; /* Position at the top */
+    margin: 0; /* Remove margins */
+    padding: 10px 0; /* Optional padding for vertical spacing */
+    background: #e0e0e0; /* Light background for neumorphism */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); /* Shadow only at the bottom */
+    border-radius: 0 0 12px 12px; /* Rounded bottom corners */
+    z-index: 1000; /* Keep on top of other content */
+}
+
+nav a {
+    transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+nav .navigation a.active {
+    color: #ff0d00; /* Active link color */
+    background-color: #e0e0e0; /* Optional background for active link */
+    border-radius: 5px; /* Optional rounded corners */
+    box-shadow: -3px -3px 5px rgb(133 133 133 / 50%), 3px 3px 5px rgb(255 255 255 / 50%);
+}
+
+nav {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space items evenly */
+    padding: 0 20px; /* Side padding for nav items */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav .left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-block-start: 0%;
+    margin-block-end: 0%;
+    padding-inline-start: 0%;
+}
+
+nav .navigation {
+    margin-left: 80px;
+}
+
+nav .navigation a, nav .social-media a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 10px; /* Padding for links */
+    border-radius: 8px; /* Rounded corners for links */
+    transition: all 0.5s ease;
+}
+
+nav .navigation a:hover, .social-media a:hover {
+    color: #ff0d00;
+    box-shadow: -1px -1px 3px rgb(133 133 133 / 50%), 1px 1px 3px rgb(255 255 255 / 50%);
+    transition: all 0.5s ease;
+}
+
+.social-media a i {
+    font-size: 20px;
+}
+
+header img {
+    margin-top: 5px;
+    height: 40px;
+}
+
+/* ******* ABOUT SECTION ****** */
+
+h1 {
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+.about-content-info {
+    margin-top: 70px;
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Space between elements */
+    align-items: center; /* Center vertically */
+}
+
+.about-half {
+    width: 50%; /* Each half takes up nearly half the width */
+}
+
+.about-half {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.about-half ul {
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove padding */
+}
+
+.about-half li {
+    padding: 10px 0; /* Space between list items */
+    display: flex; /* Flex layout for icons and text */
+    align-items: center; /* Center vertically */
+}
+
+.about-half li i {
+    margin-right: 10px; /* Space between icon and text */
+    color: #333; /* Icon color */
+}
+
+.about-half li strong {
+    padding-right: 5px; /* Space between icon and text */
+}
+
+.about-half li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 8px; /* Padding for links */
+    border-radius: 8px; /* Rounded corners for links */
+    transition: all 0.5s ease;
+}
+
+.about-half li a:hover {
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1); /* Shadow on hover */
+}
+
+.about-half img {
+    padding: 10px;
+    max-width: 50%; /* Make image responsive */
+    border-radius: 12px; /* Rounded corners for the image */
+    box-shadow: 5px 5px 15px #bebebe, -5px -5px 15px #ffffff; /* Shadow effect for image */
+}
+
+/* ****** SKILLS SECTION ****** */
+.skills-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Allow wrapping if needed */
+}
+
+.skill-category {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.skill-category h5 {
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+    font-size: 15px;
+}
+
+.skills-half-top, .skills-half-bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 100%; /* Adjust to control the size of each column */
+    margin: 10px; /* Optional: space between columns */
+}
+
+.circular-progress {
+    position: relative;
+    width: 150px; /* Adjust size as needed */
+    height: 150px;
+    margin: 10px 20px 20px 20px; /* Space between progress bars */
+    border-radius: 50%; /* Make it circular */
+    background: rgba(0, 0, 0, 0.1); /* Light background */
+    box-shadow: -2px -2px 5px 0px rgb(134 134 134), inset 3px 3px 10px 10px rgb(255 255 255), 
+                inset -3px -3px 10px 10px rgb(134 134 134), 5px 5px 10px 5px rgb(255 255 255);
+}
+
+.circular-progress svg {
+    transform: rotate(-90deg); /* Rotate to start from the top */
+    width: 100%; /* Full width of the circular-progress div */
+    height: 100%; /* Full height of the circular-progress div */
+}
+
+.progress-bg {
+    fill: none;
+    stroke: #f0f0f0; /* Background color */
+    stroke-width: 10; /* Circle thickness */
+    transition: width 0.5s ease; /* Smooth transition for the width */
+}
+
+.progress {
+    fill: none;
+    stroke: #ff0d00; /* Fill color */
+    stroke-width: 10; /* Circle thickness */
+    transition: stroke-dasharray 0.5s; /* Smooth transition */
+}
+
+.progress-value {
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold;
+    top: 75%; /* Center the value */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15px; /* Font size of the percentage */
+    color: #333; /* Text color */
+}
+
+.skill {
+    position: absolute;
+    top:45%; /* Center the value */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 35px; /* Font size of the percentage */
+    font-weight: bold;
+    color: #333; /* Text color */
+}
+
+/* ****** RESUME SECTION ****** */
+.resume-category {
+    margin-bottom: 20px;
+    padding: 20px 50px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(134, 134, 134, 0.2), 
+                -3px -3px 10px rgba(255, 255, 255, 0.7);
+}
+
+.resume-title {
+    font-size: 1.8rem;
+    margin: 30px 0 10px;
+    color: #555;
+    text-align: center;
+}
+
+.resume-item {
+    padding: 20px 50px 20px;
+    border-bottom: 1px solid #555;
+}
+
+.resume-item h4, p {
+    margin-block-start: 0%;
+    margin-block-end: 0%;
+}
+
+.resume-title-content .resume-item:last-child {
+    border-bottom: none; /* Remove bottom border from the last item */
+}
+
+.resume-job-desc {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between tags */
+}
+
+.resume-job-desc span {
+    background: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.download-pdf {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn {
+    font-size: 18px;
+    background: #e0e0e0; /* Light background for neumorphism */
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    box-shadow: -2px -2px 5px 0px rgb(134 134 134), 5px 5px 10px 0px rgb(255 255 255);
+}
+
+.btn:hover {
+    color: #ff3700;
+    box-shadow: -1px -1px 5px rgba(133, 133, 133), 1px 1px 5px 1px #ffffff; /* Shadow on hover */
+    transition: all 0.5s ease;
+}
+
+/* ************** CONTACT SECTION ************** */
+.contact-wrap {
+    display: flex;
+    flex-direction: column; /* Stack items on smaller screens */
+    gap: 20px; /* Space between items */
+}
+
+.contact-item {
+    display: flex;
+    align-items: center; /* Align icon and text vertically */
+}
+
+.contact-item i {
+    height: 50px;
+    width: 30px;
+    font-size: 30px;
+    margin-right: 20px; /* Space between icon and text */
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.contact-item p:hover {
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1); /* Shadow on hover */
+}
+
+.contact-item h3 {
+    margin-block-start: 0%;
+    margin-block-end: 0% ;
+}
+
+iframe {
+    width: 100%; /* Full width */
+    height: 300px; /* Adjust as needed */
+    border: 0; /* Remove default border */
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background color */
+    color: #333; /* Text color */
+    border-top: 1px solid #ccc; /* Top border for separation */
+}
+
+
+/* ************** LIGHT MODE OR DARK MODE ************** */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-left: 10px; /* Adjust spacing next to logo */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: background-color 0.5s;
+    border-radius: 24px; /* Makes it rounded */
+    box-shadow: -5px -5px 10px rgba(133, 133, 133), 5px 5px 10px #ffffff; /* Shadow on hover */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 5px;
+    bottom: 3px;
+    background-color: #e0e0e0;
+    transition: transform 0.5s;
+    border-radius: 50%; /* Makes it round */
+    box-shadow: inset 1px 1px 2px rgb(255 255 255 / 50%), inset -1px -1px 2px rgb(0 0 0 / 50%);
+}
+
+input:checked + .slider {
+    background-color: #222222; /* Color when checked */
+    box-shadow: -2px -2px 5px rgb(0 0 0 / 50%), 2px 2px 5px rgb(255 255 255 / 50%);
+}
+
+input:checked + .slider:before {
+    transform: translateX(25px); /* Moves the slider */
+}
+
+.slider:after {
+    content: "\f185";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: black;
+    position: absolute;
+    right: 7px;
+    font-size: 12px;
+    line-height: 24px;
+    transition: opacity 0.5s;
+}
+
+input:checked + .slider:after {
+    content: "\f186";
+    color: white;
+    left: 7px;
+    opacity: 1;
+}
+
+input:checked + .slider:before {
+    background-color: #222222;
+    left: 3px; /* Move the slider when checked */
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #222222; /* Dark background */
+    color: #ffffff; /* Light text color */
+}
+
+body.dark-mode header {
+    background: #222222; /* Darker section background */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1); /* Adjust shadows for dark mode */
+}
+
+body.dark-mode section {
+    background: #222222; /* Darker section background */
+    box-shadow: -3px -3px 7px 0px rgb(255 255 255 / 50%), 5px 5px 5px 0px rgb(0 0 0 / 50%);
+}
+
+body.dark-mode nav a {
+    transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+body.dark-mode nav .navigation a, body.dark-mode .social-media a {
+    color: #bebebe; /* Light color for links */
+}
+
+body.dark-mode nav .navigation a:hover, body.dark-mode .social-media a:hover {
+    color: #ff0d00;
+    background-color: #222222;
+    box-shadow: -1px -1px 3px rgb(0 0 0 / 50%), 1px 1px 3px rgb(255 255 255 / 50%);
+}
+
+body.dark-mode nav .navigation a.active {
+    color: #ff0d00;
+    background-color: #222222;
+    border-radius: 5px;
+    box-shadow: -3px -3px 5px rgb(0 0 0 / 50%), 3px 3px 5px rgb(255 255 255 / 50%);
+}
+
+body.dark-mode .about-half li a {
+    color: #ffffff; /* Light link color in about section */
+}
+
+body.dark-mode .about-half li a:hover {
+    background: rgba(255, 255, 255, 0.1); /* Slightly lighter background on hover */
+}
+
+.about-half img {
+    box-shadow: -2px -2px 3px rgb(255 255 255 / 50%), 2px 2px 3px rgb(0 0 0 / 50%);
+}
+
+body.dark-mode h2 {
+    color: #bebebe;
+}
+
+body.dark-mode .skill {
+    color: #bebebe;
+}
+
+body.dark-mode .circular-progress {
+    box-shadow:  -4px -4px 10px 5px rgb(0 0 0 / 50%), inset 4px 4px 10px 5px rgb(255 255 255 / 50%), 
+            inset -4px -4px 10px 5px rgb(0 0 0 / 50%), 4px 4px 10px 0px rgb(255 255 255 / 50%)
+}
+
+body.dark-mode .progress-bg {
+    stroke: #333333
+}
+
+body.dark-mode .progress-value {
+    color: #bebebe;
+}
+
+body.dark-mode .resume-title {
+    color: #bebebe;
+}
+
+body.dark-mode .resume-category {
+    background: #333333; /* Semi-transparent background for resume category */
+    box-shadow: -2px -2px 4px rgb(255 255 255 / 50%), 2px 2px 4px rgb(0 0 0 / 50%);
+}
+
+body.dark-mode .resume-job-desc span {
+    background: #222222; /* Semi-transparent background for resume category */
+}
+
+body.dark-mode .btn:hover {
+    color: #ff0d00;
+    background-color: #222222;
+}
+
+body.dark-mode .btn {
+    background-color: #222222;
+    color: #ffffff; /* Light text color */
+    box-shadow: -2px -2px 3px rgb(0 0 0 / 50%), 2px 2px 3px rgb(255 255 255 / 50%);
+}
+
+body.dark-mode .btn:hover {
+    background: #3a3a3a; /* Darker button on hover */
+}
+
+body.dark-mode .contact-item p {
+    color: #ffffff; /* Light text for contact info */
+}
+
+.contact-item p:hover {
+    background: rgba(255, 255, 255, 0.1); /* Slightly lighter background on hover */
+}
+
+/* Footer styles */
+body.dark-mode footer {
+    background-color: #1e1e1e; /* Dark footer background */
+    color: #ffffff; /* Light footer text color */
+    border-top: 1px solid #444; /* Darker top border for separation */
+}
+
+
+/* ******* MEDIA QUERIES ******* */
+@media (max-width: 768px) {
+    body {
+        margin: 0; /* Ensure there's no default margin */
+    }
+
+    header {
+        padding: 5px 10px; /* Less padding for mobile */
+    }
+
+    nav {
+        display: block;
+        flex-direction: row; /* Stack nav items vertically */
+        padding: 10px; /* Add some padding */
+    }
+    
+    nav .left {
+        padding-bottom: 10px;
+    }
+
+    nav .navigation {
+        padding-bottom: 10px;
+        margin: 0%;
+    }
+
+    nav ul.social-media {
+        justify-content: center;
+        align-items: center;
+        flex-direction: row; /* Vertical layout for nav items */
+        gap: 10px; /* Reduced gap for mobile */
+    }
+
+    .section-title {
+        font-size: 1.8rem; /* Smaller title size */
+    }
+
+    body section {
+        margin: 20px 10px !important; /* Reduced margin for mobile */
+        padding: 20px; /* Adjust padding */
+        box-shadow: 3px 3px 10px #bebebe, -3px -3px 10px #ffffff; /* Adjust shadow for mobile */
+    }
+
+    h1 {
+        font-size: 2rem; /* Smaller heading */
+    }
+
+    h2 {
+        font-size: 1.8rem; /* Smaller subheading */
+    }
+
+    .about-content-info{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .about-half, .skills-half-bottom {
+        width: 100%; /* Full width for mobile */
+        margin: 10px 0; /* Margin between sections */
+    }
+
+    .about-half li a {
+        font-size: 12px;
+    }
+
+    .about-half img {
+        max-width: 90%; /* Make image responsive */
+    }
+
+    .skill-category h5 {
+        font-size: 8px;
+    }
+
+    .skills-half-top {
+        margin: 0%;
+        width: auto;
+    }
+
+    .circular-progress {
+        width: 50px; /* Smaller circular progress */
+        height: 50px; /* Keep it circular */
+    }
+
+    .circular-progress svg {
+        height: auto;
+    }
+
+    .progress-value {
+        font-size: 8px; /* Smaller font size for percentages */
+    }
+
+    .skill {
+        font-size: 12px;
+    }
+
+    .resume-category, .resume-item {
+        padding: 15px; /* Less padding for items */
+    }
+
+    .resume-job-desc span {
+        padding: 2px 5px;
+        font-size: 14px;
+    }
+
+    .download-pdf {
+        margin-top: 15px; /* Less margin */
+    }
+
+    .btn {
+        padding: 8px 15px; /* Smaller button size */
+        font-size: 16px; /* Adjust font size */
+    }
+
+    .contact-wrap {
+        gap: 10px; /* Reduced gap */
+    }
+
+    .contact-item {
+        flex-direction: column; /* Stack items */
+        align-items: flex-start; /* Align to start */
+    }
+
+    iframe {
+        height: 200px; /* Adjust height for mobile */
+    }
+
+    footer {
+        padding: 15px; /* Less padding for footer */
+        font-size: 14px; /* Adjust font size */
+    }
+}
