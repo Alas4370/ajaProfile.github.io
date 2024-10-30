@@ -145,7 +145,7 @@ window.addEventListener('scroll', () => {
 // **************** Download PDF Resume ****************
 function downloadPDF() {
     const link = document.createElement('a');
-    link.href = 'https://alas4370.github.io/AJA3Profile.github.io/assets/pdf/AJA_Resume.pdf'; // Replace with the actual path to your PDF file
+    link.href = 'https://alas4370.github.io/ajaProfile.github.io/assets/pdf/AJA_Resume.pdf'; // Replace with the actual path to your PDF file
     link.download = 'AJA_Resume.pdf'; // Replace with the desired file name for download
     link.click();
 }
