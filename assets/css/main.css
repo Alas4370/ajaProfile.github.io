@@ -172,8 +172,8 @@ h1 {
 /* ****** SKILLS SECTION ****** */
 .skills-content {
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap; /* Allow wrapping if needed */
 }
 
@@ -622,28 +622,31 @@ body.dark-mode footer {
     .about-half img {
         max-width: 90%; /* Make image responsive */
     }
-
-    .skill-category h5 {
-        font-size: 8px;
-    }
-
-    .skills-half-top {
-        margin: 0%;
+    .skills-content #canvas {
         width: auto;
     }
 
-    .circular-progress {
-        width: 50px; /* Smaller circular progress */
-        height: 50px; /* Keep it circular */
-    }
+    /* .skill-category h5 {
+        font-size: 8px;
+    } */
 
-    .circular-progress svg {
+    /* .skills-half-top {
+        margin: 0%;
+        width: auto;
+    } */
+
+    /* .circular-progress {
+        width: 50px; Smaller circular progress
+        height: 50px; Keep it circular
+    } */
+
+    /* .circular-progress svg {
         height: auto;
-    }
+    } */
 
-    .progress-value {
-        font-size: 8px; /* Smaller font size for percentages */
-    }
+    /* .progress-value {
+        font-size: 8px; Smaller font size for percentages
+    } */
 
     .skill {
         font-size: 12px;
