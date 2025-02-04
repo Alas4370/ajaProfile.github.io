@@ -1,690 +1,952 @@
-/* General Body Styles */
-html {
-    scroll-behavior: smooth;
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Nunito', sans-serif;
-    background-color: #e0e0e0;
-    color: #222222;
-    margin: 0; /* Remove margins */
+    font-family: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    line-height: 1.6;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    background-image: url('../images/bg.jpg'); /* Background image for the body */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Fix the background */
+    background-color: #f0f0f0; /* Fallback background color */
+    font-weight: 100;
 }
 
-body section {
-    margin: 50px 200px;
-    padding: 60px 40px; /* Padding to give space around the section */
-    background: #e0e0e0; /* Background color */
-    box-shadow: 5px 5px 15px #bebebe, -5px -5px 15px #ffffff; /* Neumorphism shadow */
-    border-radius: 12px; /* Rounded corners */
+h1 {
+    font-size: 4rem;
+    color: #f03801;
 }
 
 h2 {
-    margin: auto;
-    font-family: 'YourFontFamily', sans-serif; /* Use your preferred font */
-    font-size: 2.5rem;
-    color: #333;
+    padding-left: 10px;
+    font-size: 2rem;
+    border-left: 5px solid #f03801; /* Change the color and thickness of the underline */
+    display: inline; /* Ensures the underline only affects the text */
+}
+
+h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-inline-start: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+p {
+    font-size: 16px;
+}
+
+section {       /* Add spacing to the sections to avoid hiding content behind the navbar */
+    padding: 50px 200px; /* Adjust padding for sections below the header */
+    color: white; /* Text color for sections */
+    margin: 20px; /* Margin for sections */
 }
 
 .section-title {
-    text-align: center;
-    margin-bottom: 30px;
+    opacity: 0; /* Start with the item invisible */
+    transform: translateX(-50px); /* Start position for the slide-in effect */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition for opacity and transform */
+    text-align: left;
+    margin-bottom: 40px; /* Space below the title */
 }
 
-/* ****** HEADER ****** */
-header {
-    width: 100%; /* Cover full width */
-    position: sticky; /* Stick to the top */
-    top: 0; /* Position at the top */
-    margin: 0; /* Remove margins */
-    padding: 10px 0; /* Optional padding for vertical spacing */
-    background: #e0e0e0; /* Light background for neumorphism */
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); /* Shadow only at the bottom */
-    border-radius: 0 0 12px 12px; /* Rounded bottom corners */
-    z-index: 1000; /* Keep on top of other content */
+.section-title.visible {
+    opacity: 1; /* Make the item visible */
+    transform: translateX(0); /* Move to its original position */
 }
 
-nav a {
-    transition: color 0.5s ease, background-color 0.5s ease;
+/* NAVBAR */
+body.scrolled #navbar {         /* Optional: Change background color on scroll */
+    background-color: rgba(51, 51, 51, 0.5); /* Semi-transparent background after scroll */
+    border-bottom: 1px solid #f03801; /* Add a color outline at the bottom */
 }
 
-nav .navigation a.active {
-    color: #ff0d00; /* Active link color */
-    background-color: #e0e0e0; /* Optional background for active link */
-    border-radius: 5px; /* Optional rounded corners */
-    box-shadow: -3px -3px 5px rgb(133 133 133 / 50%), 3px 3px 5px rgb(255 255 255 / 50%);
-}
-
-nav {
-    display: flex; /* Use flexbox for layout */
-    align-items: center; /* Center items vertically */
-    justify-content: space-between; /* Space items evenly */
-    padding: 0 20px; /* Side padding for nav items */
-}
-
-nav ul {
+#navbar {
     display: flex;
+    justify-content: space-between; /* Space between left, center, and right */
+    align-items: center; /* Vertically center the items */
+    padding: 10px 0;
+    background-color: transparent; /* Transparent background */
+    position: fixed;
+    width: 100%;   
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-toggle {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.bar {
+    width: 25px; /* Width of the bars */
+    height: 3px; /* Height of the bars */
+    background-color: #f03801; /* Color of the bars */
+    margin: 3px 0; /* Spacing between bars */
+}
+
+.navbar-left {
+    margin-left: 20px;
+    flex: 1;
+    display: flex;
+    align-items: center; /* Vertically align logo and name */
+}
+
+.navbar-left h1 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0; /* Remove default margin on h1 */
+    line-height: 1; /* Ensure proper line height for alignment */
+}
+
+.navbar-logo {
+    width: 30px; /* Adjust size as needed */
+    height: 30px;
+    margin-right: 10px; /* Spacing between logo and name */
+}
+
+.navbar-center {
+    display: flex; /* Use flexbox */
     list-style: none;
-    gap: 20px;
-}
-
-nav .left {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
-    margin-block-start: 0%;
-    margin-block-end: 0%;
-    padding-inline-start: 0%;
+}
+.navbar-center ul {
+    display: flex; /* Make the list items horizontal */
+    list-style: none; /* Remove default bullet points */
+    padding: 0;
+    margin: 0;
 }
 
-nav .navigation {
-    margin-left: 80px;
+.navbar-center li {
+    margin: 0 20px; /* Space between menu items */
+    list-style: none; /* Remove list styling */
 }
 
-nav .navigation a, nav .social-media a {
+.navbar-center li a {
+    color: white;
     text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    padding: 10px; /* Padding for links */
-    border-radius: 8px; /* Rounded corners for links */
-    transition: all 0.5s ease;
-}
-
-nav .navigation a:hover, .social-media a:hover {
-    color: #ff0d00;
-    box-shadow: -1px -1px 3px rgb(133 133 133 / 50%), 1px 1px 3px rgb(255 255 255 / 50%);
-    transition: all 0.5s ease;
-}
-
-.social-media a i {
-    font-size: 20px;
-}
-
-header img {
-    margin-top: 5px;
-    height: 40px;
-}
-
-/* ******* ABOUT SECTION ****** */
-
-h1 {
-    text-align: center; /* Center the heading */
-    margin-bottom: 20px; /* Space below the heading */
-}
-
-.about-content-info {
-    margin-top: 70px;
-    display: flex; /* Flexbox for layout */
-    justify-content: space-between; /* Space between elements */
-    align-items: center; /* Center vertically */
-}
-
-.about-half {
-    width: 50%; /* Each half takes up nearly half the width */
-}
-
-.about-half {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.about-half ul {
-    list-style: none; /* Remove default list styles */
-    padding: 0; /* Remove padding */
-}
-
-.about-half li {
-    padding: 10px 0; /* Space between list items */
-    display: flex; /* Flex layout for icons and text */
-    align-items: center; /* Center vertically */
-}
-
-.about-half li i {
-    margin-right: 10px; /* Space between icon and text */
-    color: #333; /* Icon color */
-}
-
-.about-half li strong {
-    padding-right: 5px; /* Space between icon and text */
-}
-
-.about-half li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    padding: 8px; /* Padding for links */
-    border-radius: 8px; /* Rounded corners for links */
-    transition: all 0.5s ease;
-}
-
-.about-half li a:hover {
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1); /* Shadow on hover */
-}
-
-.about-half img {
-    padding: 10px;
-    max-width: 50%; /* Make image responsive */
-    border-radius: 12px; /* Rounded corners for the image */
-    box-shadow: 5px 5px 15px #bebebe, -5px -5px 15px #ffffff; /* Shadow effect for image */
-}
-
-/* ****** SKILLS SECTION ****** */
-.skills-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap; /* Allow wrapping if needed */
-}
-
-.skill-category {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-
-.skill-category h5 {
-    margin-top: 1rem;
-    margin-bottom: .5rem;
-    font-size: 15px;
-}
-
-.skills-half-top, .skills-half-bottom {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-around;
-    width: 100%; /* Adjust to control the size of each column */
-    margin: 10px; /* Optional: space between columns */
-}
-
-.circular-progress {
-    position: relative;
-    width: 150px; /* Adjust size as needed */
-    height: 150px;
-    margin: 10px 20px 20px 20px; /* Space between progress bars */
-    border-radius: 50%; /* Make it circular */
-    background: rgba(0, 0, 0, 0.1); /* Light background */
-    box-shadow: -2px -2px 5px 0px rgb(134 134 134), inset 3px 3px 10px 10px rgb(255 255 255), 
-                inset -3px -3px 10px 10px rgb(134 134 134), 5px 5px 10px 5px rgb(255 255 255);
-}
-
-.circular-progress svg {
-    transform: rotate(-90deg); /* Rotate to start from the top */
-    width: 100%; /* Full width of the circular-progress div */
-    height: 100%; /* Full height of the circular-progress div */
-}
-
-.progress-bg {
-    fill: none;
-    stroke: #f0f0f0; /* Background color */
-    stroke-width: 10; /* Circle thickness */
-    transition: width 0.5s ease; /* Smooth transition for the width */
-}
-
-.progress {
-    fill: none;
-    stroke: #ff0d00; /* Fill color */
-    stroke-width: 10; /* Circle thickness */
-    transition: stroke-dasharray 0.5s; /* Smooth transition */
-}
-
-.progress-value {
-    position: absolute;
-    font-size: 14px;
-    font-weight: bold;
-    top: 75%; /* Center the value */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 15px; /* Font size of the percentage */
-    color: #333; /* Text color */
-}
-
-.skill {
-    position: absolute;
-    top:45%; /* Center the value */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 35px; /* Font size of the percentage */
-    font-weight: bold;
-    color: #333; /* Text color */
-}
-
-/* ****** RESUME SECTION ****** */
-.resume-category {
-    margin-bottom: 20px;
-    padding: 20px 50px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    box-shadow: 3px 3px 10px rgba(134, 134, 134, 0.2), 
-                -3px -3px 10px rgba(255, 255, 255, 0.7);
-}
-
-.resume-title {
-    font-size: 1.8rem;
-    margin: 30px 0 10px;
-    color: #555;
-    text-align: center;
-}
-
-.resume-item {
-    padding: 20px 50px 20px;
-    border-bottom: 1px solid #555;
-}
-
-.resume-item h4, p {
-    margin-block-start: 0%;
-    margin-block-end: 0%;
-}
-
-.resume-title-content .resume-item:last-child {
-    border-bottom: none; /* Remove bottom border from the last item */
-}
-
-.resume-job-desc {
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* Space between tags */
-}
-
-.resume-job-desc span {
-    background: #e0e0e0;
+    font-size: 1.2rem;
     padding: 5px 10px;
-    border-radius: 5px;
+    transition: color 0.3s ease;
 }
 
-.download-pdf {
-    text-align: center;
-    margin-top: 30px;
+.navbar-center li a:hover {
+    color: #f03801; /* Change text color on hover */
 }
 
+.navbar-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+.navbar-right a {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar-right a:hover {
+    color: #f03801; /* Change icon color on hover */
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-weight: 400;
+    color: white;
+}
+
+nav ul li a.active {
+    color: #f03801; /* Active link color */
+}
+
+/* HERO SECTION */
 .btn {
-    font-size: 18px;
-    background: #e0e0e0; /* Light background for neumorphism */
-    color: #333;
+    margin-top: 20px;
     padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.5s ease;
-    box-shadow: -2px -2px 5px 0px rgb(134 134 134), 5px 5px 10px 0px rgb(255 255 255);
+    border: 2px solid #f03801; /* Outline color */
+    color: #f03801;            /* Text color */
+    background-color: transparent; /* No background */
+    text-decoration: none;
+    border-radius: 4px;     /* Rounded corners */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn:hover {
-    color: #ff3700;
-    box-shadow: -1px -1px 5px rgba(133, 133, 133), 1px 1px 5px 1px #ffffff; /* Shadow on hover */
-    transition: all 0.5s ease;
+    background-color: #f03801; /* Background on hover */
+    color: #fff;            /* Text color on hover */
 }
 
-/* ************** CONTACT SECTION ************** */
-.contact-wrap {
-    display: flex;
-    flex-direction: column; /* Stack items on smaller screens */
-    gap: 20px; /* Space between items */
-}
-
-.contact-item {
-    display: flex;
-    align-items: center; /* Align icon and text vertically */
-}
-
-.contact-item i {
-    height: 50px;
-    width: 30px;
-    font-size: 30px;
-    margin-right: 20px; /* Space between icon and text */
-    align-items: center;
-    justify-content: center;
-    display: flex;
+header#hero {
+    height: 100vh; /* Full viewport height */
+    display: flex; /* Center content */
     flex-direction: column;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    color: white; /* Text color for visibility */
+    text-align: center; /* Center text */
+}
+
+header#hero h1,
+header#hero p {
+    margin: 0; /* Remove default margins */
+}
+
+/* ABOUT SECTION */
+#about .container p {
+    opacity: 0; /* Start with the item invisible */
+    transform: translateY(20px); /* Start position for the slide-in effect */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition for opacity and transform */
+}
+
+#about .container p.visible {
+    opacity: 1; /* Make the item visible */
+    transform: translateY(0); /* Move to its original position */
+}
+
+.about-content-details {
+    width: 65%; /* First column takes 65% of the container */
+    display: flex; /* Use Flexbox for layout */
+    flex-direction: column; /* Stack the two containers vertically */
     flex-wrap: wrap;
 }
 
-.contact-item p:hover {
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1); /* Shadow on hover */
+.about-content{
+    display: flex;
 }
 
-.contact-item h3 {
-    margin-block-start: 0%;
-    margin-block-end: 0% ;
+.about-content-image {
+    display: inline-block; /* To ensure the image stays in its own block */
+    overflow: hidden; /* Prevent any overflow from the animation */
+    width: 35%; /* 35% width for the right column */
 }
 
-iframe {
-    width: 100%; /* Full width */
-    height: 300px; /* Adjust as needed */
-    border: 0; /* Remove default border */
+.about-content-image img {
+    width: 100%;  /* Ensure the image takes up the full width of the container */
+    height: 100%; /* Ensure the image takes up the full height of the container */
+    object-fit: cover; /* Scale the image, keeping its aspect ratio and ensuring it covers the container */
 }
 
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #f8f9fa; /* Light background color */
-    color: #333; /* Text color */
-    border-top: 1px solid #ccc; /* Top border for separation */
+.sticker {
+    filter: url(#outline); /* Apply the outline filter */
+    animation: shake 0.5s infinite;
+    animation: bouncce is infinite;
 }
 
-
-/* ************** LIGHT MODE OR DARK MODE ************** */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 24px;
-    margin-left: 10px; /* Adjust spacing next to logo */
+.sticker {
+    filter: url(#outline); /* Apply the outline filter */
+    animation: shakeBounceRotate 1s infinite; /* Add the combined animation */
 }
 
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+@keyframes shakeBounceRotate {
+    0% {
+        transform: translateY(0) rotate(0deg); /* Original position */
+    }
+    25% {
+        transform: translateY(-5px) rotate(-2deg); /* Move up and rotate slightly left */
+    }
+    50% {
+        transform: translateY(-5px) rotate(2deg); /* Move down and rotate slightly right */
+    }
+    75% {
+        transform: translateY(-5px) rotate(-2deg); /* Move up and rotate slightly left */
+    }
+    100% {
+        transform: translateY(0) rotate(0deg); /* Return to original position */
+    }
 }
 
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: background-color 0.5s;
-    border-radius: 24px; /* Makes it rounded */
-    box-shadow: -5px -5px 10px rgba(133, 133, 133), 5px 5px 10px #ffffff; /* Shadow on hover */
+.about-content-info {
+    padding-top: 100px;
+    display: flex; /* Use Flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping to the next line */ 
 }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 18px;
-    width: 18px;
-    left: 5px;
-    bottom: 3px;
-    background-color: #e0e0e0;
-    transition: transform 0.5s;
-    border-radius: 50%; /* Makes it round */
-    box-shadow: inset 1px 1px 2px rgb(255 255 255 / 50%), inset -1px -1px 2px rgb(0 0 0 / 50%);
+.about-content-interest {
+    padding-top: 100px;
+    display: flex; /* Use Flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping to the next line */ 
 }
 
-input:checked + .slider {
-    background-color: #222222; /* Color when checked */
-    box-shadow: -2px -2px 5px rgb(0 0 0 / 50%), 2px 2px 5px rgb(255 255 255 / 50%);
+.about-content-info a {
+    color: #f03801;
+    text-decoration: none;
 }
 
-input:checked + .slider:before {
-    transform: translateX(25px); /* Moves the slider */
-}
-
-.slider:after {
-    content: "\f185";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    color: black;
-    position: absolute;
-    right: 7px;
-    font-size: 12px;
-    line-height: 24px;
-    transition: opacity 0.5s;
-}
-
-input:checked + .slider:after {
-    content: "\f186";
+.about-content-interest a {
+    display: flex;
+    justify-content: center; /* Horizontally center the text */
+    align-items: center;     /* Vertically center the text */
+    width: 60px;
+    height: 60px;
+    border: solid 1px #f03801;
+    border-radius: 3px;
     color: white;
-    left: 7px;
-    opacity: 1;
+    margin: 0 5px;
+    font-size: 1.8rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-input:checked + .slider:before {
-    background-color: #222222;
-    left: 3px; /* Move the slider when checked */
+.about-content-interest a:hover {
+    color: #f03801; /* Change icon color on hover */
 }
 
-/* Dark Mode Styles */
-body.dark-mode {
-    background-color: #222222; /* Dark background */
-    color: #ffffff; /* Light text color */
+.about-content-interest h3 {
+    padding-right: 30px;
+    display: flex;
+    justify-content: center; /* Horizontally center the text */
+    align-items: center;     /* Vertically center the text */
 }
 
-body.dark-mode header {
-    background: #222222; /* Darker section background */
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1); /* Adjust shadows for dark mode */
+.about-half {
+    flex: 0 0 50%; /* Each column takes 50% of the width */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    padding: 0 10px; /* Optional: Add some padding to the columns */
 }
 
-body.dark-mode section {
-    background: #222222; /* Darker section background */
-    box-shadow: -3px -3px 7px 0px rgb(255 255 255 / 50%), 5px 5px 5px 0px rgb(0 0 0 / 50%);
+.about-half ul li{
+    padding-top: 10px;
+    font-size: 14px;
+    font-weight: 100;
 }
 
-body.dark-mode nav a {
-    transition: color 0.5s ease, background-color 0.5s ease;
+/* SKILL SECTION */
+.skill {
+    display: flex; /* Flexbox to align items */
+    justify-content: space-between; /* Space between skill name and value */
+    font-size: 12px;
+    color: white; /* Change text color if needed */
 }
 
-body.dark-mode nav .navigation a, body.dark-mode .social-media a {
-    color: #bebebe; /* Light color for links */
+.val {
+    margin-left: 10px; /* Space between skill name and value */
 }
 
-body.dark-mode nav .navigation a:hover, body.dark-mode .social-media a:hover {
-    color: #ff0d00;
-    background-color: #222222;
-    box-shadow: -1px -1px 3px rgb(0 0 0 / 50%), 1px 1px 3px rgb(255 255 255 / 50%);
+.progress {
+    margin-bottom: 20px; /* Space between progress bars */
+    position: relative; /* Position relative to use for absolute children */
 }
 
-body.dark-mode nav .navigation a.active {
-    color: #ff0d00;
-    background-color: #222222;
-    border-radius: 5px;
-    box-shadow: -3px -3px 5px rgb(0 0 0 / 50%), 3px 3px 5px rgb(255 255 255 / 50%);
+.progress-bar-wrap {
+    border: 1px solid #f03801;
+    border-radius:  2px; /* Rounded corners */
 }
 
-body.dark-mode .about-half li a {
-    color: #ffffff; /* Light link color in about section */
+.progress-bar {
+    border: 1px solid black;
+    background-color: #f03801;
+    height: 10px; /* Height of the progress bar */
+    border-radius: 2px; /* Rounded corners */
+    width: 0; /* Start with width 0 to allow animation */
 }
 
-body.dark-mode .about-half li a:hover {
-    background: rgba(255, 255, 255, 0.1); /* Slightly lighter background on hover */
+/* Style for the progress bars */
+.progress-bar {
+    transition: width 0.5s; /* Smooth transition for the progress bar */
 }
 
-.about-half img {
-    box-shadow: -2px -2px 3px rgb(255 255 255 / 50%), 2px 2px 3px rgb(0 0 0 / 50%);
+/* Ensure the progress bars are full width */
+.progress-bar-wrap {
+    width: 100%; /* Full width for the progress wrap */
 }
 
-body.dark-mode h2 {
-    color: #bebebe;
+/* Optional: Add margin to columns */
+.skills-content {
+    display: flex; /* Use Flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping to the next line */ 
 }
 
-body.dark-mode .skill {
-    color: #bebebe;
+/* Optional: Add background and padding to columns */
+.skills-half-left {
+    flex: 0 0 50%; /* Each column takes 50% of the width */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    padding: 0 10px; /* Optional: Add some padding to the columns */
 }
 
-body.dark-mode .circular-progress {
-    box-shadow:  -4px -4px 10px 5px rgb(0 0 0 / 50%), inset 4px 4px 10px 5px rgb(255 255 255 / 50%), 
-            inset -4px -4px 10px 5px rgb(0 0 0 / 50%), 4px 4px 10px 0px rgb(255 255 255 / 50%)
+.skills-half-right {
+    flex: 0 0 50%; /* Each column takes 50% of the width */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    padding: 0 10px; /* Optional: Add some padding to the columns */
 }
 
-body.dark-mode .progress-bg {
-    stroke: #333333
+/* RESUME SECTION*/
+.resume-title {
+    text-transform: uppercase;
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+    padding-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #f03801;
 }
 
-body.dark-mode .progress-value {
-    color: #bebebe;
+.resume-content, .resume-title-content {
+    padding: 0 50px;
 }
 
-body.dark-mode .resume-title {
-    color: #bebebe;
+.resume-item {
+    opacity: 0; /* Start with the item invisible */
+    transform: translateX(50px); /* Start position for the slide-in effect */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition for opacity and transform */
+    position: relative; /* Establish a positioning context for the circle */
+    padding-left: 40px; /* Space for the circle and line */
+    margin-bottom: 20px; /* Space between items */
 }
 
-body.dark-mode .resume-category {
-    background: #333333; /* Semi-transparent background for resume category */
-    box-shadow: -2px -2px 4px rgb(255 255 255 / 50%), 2px 2px 4px rgb(0 0 0 / 50%);
+.resume-item.visible {
+    opacity: 1; /* Make the item visible */
+    transform: translateX(0); /* Move to its original position */
 }
 
-body.dark-mode .resume-job-desc span {
-    background: #222222; /* Semi-transparent background for resume category */
+.resume-item ul {
+    padding-left: 20px;
+    margin-bottom: 16px;
 }
 
-body.dark-mode .btn:hover {
-    color: #ff0d00;
-    background-color: #222222;
+.resume-item h4{
+    line-height: 18px;
+    font-size: 20px;
+    justify-content: flex-start !important; /* Align items to the start (top) */
+    align-items: flex-start !important; /* Align items to the left */
 }
 
-body.dark-mode .btn {
-    background-color: #222222;
-    color: #ffffff; /* Light text color */
-    box-shadow: -2px -2px 3px rgb(0 0 0 / 50%), 2px 2px 3px rgb(255 255 255 / 50%);
+.resume-item h5{
+    padding-left: 20px;
 }
 
-body.dark-mode .btn:hover {
-    background: #3a3a3a; /* Darker button on hover */
+.resume-item::before {
+    content: ''; /* Required to create the pseudo-element */
+    position: absolute;
+    left: 0; /* Align to the left */
+    width: 16px; /* Circle diameter */
+    height: 16px; /* Circle diameter */
+    background-color: #f03801; /* Circle color */
+    border-radius: 50%; /* Make it circular */
+    top: 0; /* Position at the top of the resume item */
 }
 
-body.dark-mode .contact-item p {
-    color: #ffffff; /* Light text for contact info */
+/* Pseudo-element styles for the line */
+.resume-item::after {
+    content: ''; /* Required to create the pseudo-element */
+    position: absolute;
+    left: 6.5px; /* Position line slightly to the right */
+    top: 10px; /* Start the line below the circle */
+    width: 2px; /* Line thickness */
+    height: calc(100% + 18px); /* Full height of the resume item */
+    background-color: #f03801; /* Line color */
 }
 
-.contact-item p:hover {
-    background: rgba(255, 255, 255, 0.1); /* Slightly lighter background on hover */
+.resume-item::before,
+.resume-item::after {
+    transition: none !important; /* Ensure no transition occurs */
 }
 
-/* Footer styles */
-body.dark-mode footer {
-    background-color: #1e1e1e; /* Dark footer background */
-    color: #ffffff; /* Light footer text color */
-    border-top: 1px solid #444; /* Darker top border for separation */
+/* Optional: Adjust the line position if needed */
+.resume-item:last-child::after {
+    height: calc(100% + 10px); /* Prevents extending below the last item */
 }
 
+.resume-job-desc {
+    height: 50px;
+    align-items: center;
+    display: flex;
+    padding: 5px;
+}
 
-/* ******* MEDIA QUERIES ******* */
-@media (max-width: 768px) {
+.resume-job-desc span {
+    color: #f03801;
+    font-size: 12px;
+    border: solid 1px #f03801;
+    padding: 5px;
+    margin-left: 5px;
+}
+
+#resume .container.download-pdf {
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* CONTACT SECTION */
+.contact-wrap {
+    opacity: 0; /* Start with the item invisible */
+    transform: translateY(50px); /* Start position for the slide-in effect */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition for opacity and transform */
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background after scroll */
+    box-shadow: 0 4px 15px rgba(150, 150, 150, 0.5); /* Shadow effect */
+}
+
+.contact-wrap.visible {
+    opacity: 1; /* Make the item visible */
+    transform: translateY(0); /* Move to its original position */
+}
+
+.contact-wrap iframe {
+    padding-top: 20px;
+    width: 100%;
+    height: 300px;
+}
+
+.contact-item {
+    display: flex; /* Flexbox for horizontal alignment */
+    align-items: center; /* Vertically aligns the icon with the text */
+    gap: 10px; /* Add space between the icon and the text */
+    padding-bottom: 20px;
+}
+
+.contact-item i {
+    display: flex;
+    justify-content: center; /* Horizontally center the text */
+    align-items: center;     /* Vertically center the text */
+    border: solid 2px #f03801;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 24px; /* Adjust icon size if needed */
+    color: #f03801; /* Change icon color if needed */
+}
+
+/* FOOTER */
+footer {
+    display: flex; /* Center content */
+    flex-direction: column;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    color: white; /* Text color for visibility */
+    text-align: center; /* Center text */
+}
+
+/* Media Queries for 1280 x 800 */
+@media (max-width: 1280px) {
     body {
-        margin: 0; /* Ensure there's no default margin */
-    }
-
-    header {
-        padding: 5px 10px; /* Less padding for mobile */
-    }
-
-    nav {
-        display: block;
-        flex-direction: row; /* Stack nav items vertically */
-        padding: 10px; /* Add some padding */
-    }
-    
-    nav .left {
-        padding-bottom: 10px;
-    }
-
-    nav .navigation {
-        padding-bottom: 10px;
-        margin: 0%;
-    }
-
-    nav ul.social-media {
-        justify-content: center;
-        align-items: center;
-        flex-direction: row; /* Vertical layout for nav items */
-        gap: 10px; /* Reduced gap for mobile */
-    }
-
-    .section-title {
-        font-size: 1.8rem; /* Smaller title size */
-    }
-
-    body section {
-        margin: 20px 10px !important; /* Reduced margin for mobile */
-        padding: 20px; /* Adjust padding */
-        box-shadow: 3px 3px 10px #bebebe, -3px -3px 10px #ffffff; /* Adjust shadow for mobile */
+        padding: 0; /* Remove default padding */
     }
 
     h1 {
-        font-size: 2rem; /* Smaller heading */
+        font-size: 4rem; /* Increase heading size */
     }
 
     h2 {
-        font-size: 1.8rem; /* Smaller subheading */
+        font-size: 2rem; /* Increase subheading size */
     }
 
-    .about-content-info{
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .about-half, .skills-half-bottom {
-        width: 100%; /* Full width for mobile */
-        margin: 10px 0; /* Margin between sections */
+    section {
+        padding: 30px; /* Increase section padding */
     }
 
-    .about-half li a {
-        font-size: 12px;
+    .navbar-left h1 {
+        font-size: 1.5rem; /* Adjust navbar title size */
     }
 
-    .about-half img {
-        max-width: 90%; /* Make image responsive */
-    }
-    .skills-content #canvas {
-        width: auto;
-    }
-
-    /* .skill-category h5 {
-        font-size: 8px;
-    } */
-
-    /* .skills-half-top {
-        margin: 0%;
-        width: auto;
-    } */
-
-    /* .circular-progress {
-        width: 50px; Smaller circular progress
-        height: 50px; Keep it circular
-    } */
-
-    /* .circular-progress svg {
-        height: auto;
-    } */
-
-    /* .progress-value {
-        font-size: 8px; Smaller font size for percentages
-    } */
-
-    .skill {
-        font-size: 12px;
-    }
-
-    .resume-category, .resume-item {
-        padding: 15px; /* Less padding for items */
-    }
-
-    .resume-job-desc span {
-        padding: 2px 5px;
-        font-size: 14px;
-    }
-
-    .download-pdf {
-        margin-top: 15px; /* Less margin */
+    .navbar-center li a {
+        font-size: 1.2rem; /* Adjust menu item font size */
     }
 
     .btn {
-        padding: 8px 15px; /* Smaller button size */
-        font-size: 16px; /* Adjust font size */
+        padding: 10px 20px; /* Adjust button padding */
+    }
+
+    .about-content-image {
+        max-width: 100%; /* Ensure responsive scaling */
+    }
+
+    .about-content-info, .about-content-interest {
+        padding-top: 60px; /* Increase top padding */
+    }
+
+    .resume-content, .resume-title-content {
+        padding: 0 30px; /* Increase padding for resume section */
     }
 
     .contact-wrap {
-        gap: 10px; /* Reduced gap */
-    }
-
-    .contact-item {
-        flex-direction: column; /* Stack items */
-        align-items: flex-start; /* Align to start */
-    }
-
-    iframe {
-        height: 200px; /* Adjust height for mobile */
+        padding: 30px; /* Increase padding for contact section */
     }
 
     footer {
-        padding: 15px; /* Less padding for footer */
-        font-size: 14px; /* Adjust font size */
+        padding: 30px; /* Increase padding for footer */
+    }
+}
+
+@media (max-width: 1080px) {
+    body {
+        padding: 0; /* Remove unnecessary padding */
+    }
+
+    h1 {
+        font-size: 3rem; /* Adjust heading size for smaller screens */
+    }
+
+    h2 {
+        font-size: 1.8rem; /* Adjust subheading size */
+    }
+
+    section {
+        padding: 20px; /* Reduce padding for sections */
+    }
+
+    .navbar-left h1 {
+        font-size: 1.3rem; /* Smaller title size in the navbar */
+    }
+
+    .navbar-center li a {
+        font-size: 1rem; /* Decrease font size for menu items */
+    }
+
+    .navbar-right a {
+        font-size: 1.2rem; /* Adjust icon font size for right-aligned items */
+    }
+
+    .about-content-image {
+        width: 100%; /* Full width image */
+        height: auto; /* Adjust height automatically */
+    }
+
+    .about-content-details {
+        width: 100%; /* Full width for details section */
+    }
+
+    .about-content-info, .about-content-interest {
+        padding-top: 40px; /* Reduce top padding */
+    }
+
+    .btn {
+        padding: 8px 16px; /* Adjust button size for smaller screens */
+    }
+
+    .resume-content, .resume-title-content {
+        padding: 0 20px; /* Smaller padding for the resume section */
+    }
+
+    .resume-item {
+        padding-left: 30px; /* Adjust padding for resume items */
+    }
+
+    .contact-wrap {
+        padding: 20px; /* Adjust padding for contact section */
+    }
+
+    footer {
+        padding: 20px; /* Smaller padding for the footer */
+    }
+}
+
+/* Media Queries for 1024 x 600 */
+@media (max-width: 1024px) {
+    body {
+        padding: 0; /* Remove default padding */
+    }
+
+    h1 {
+        font-size: 3rem; /* Decrease heading size */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Decrease subheading size */
+    }
+
+    section {
+        padding: 20px; /* Reduce section padding */
+    }
+
+    .navbar-left h1 {
+        font-size: 1.2rem; /* Adjust navbar title size */
+    }
+
+    .navbar-center li a {
+        font-size: 1rem; /* Adjust menu item font size */
+    }
+
+    .btn {
+        padding: 8px 16px; /* Adjust button padding */
+    }
+
+    .about-content-image {
+        width: 30%; /* Make the image full width */
+    }
+
+    .about-content-info, .about-content-interest {
+        padding-top: 50px; /* Reduce top padding */
+    }
+
+    .resume-content, .resume-title-content {
+        padding: 0 20px; /* Reduce padding for resume section */
+    }
+
+    .contact-wrap {
+        padding: 20px; /* Reduce padding for contact section */
+    }
+
+    footer {
+        padding: 20px; /* Reduce padding for footer */
+    }
+}
+
+/* Media Queries for 853 x 1280 */
+@media (max-width: 853px) {
+    body {
+        padding: 0; /* Remove default padding */
+    }
+
+    h1 {
+        font-size: 2.5rem; /* Adjust heading size */
+    }
+
+    h2 {
+        font-size: 1.8rem; /* Adjust subheading size */
+    }
+
+    section {
+        padding: 20px; /* Adjust section padding */
+    }
+
+    .navbar-left h1 {
+        font-size: 1.2rem; /* Adjust navbar title size */
+    }
+
+    .navbar-center li a {
+        font-size: 1rem; /* Adjust menu item font size */
+    }
+
+    .btn {
+        padding: 8px 15px; /* Adjust button padding */
+    }
+
+    .about-half {
+        flex: 0 0 100%;
+    }
+
+    .about-content-image {
+        width: 100%; /* Full width for images */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .about-content-interest a {
+        width: 50px;
+        height: 50px;
+        padding: 5px;
+        margin-top: 5px;
+    }
+
+    .about-content-info, .about-content-interest {
+        padding-top: 30px; /* Adjust top padding */
+    }
+
+    .resume-content, .resume-title-content {
+        padding: 0 15px; /* Adjust padding for resume section */
+    }
+
+    .contact-wrap {
+        padding: 15px; /* Adjust padding for contact section */
+    }
+
+    footer {
+        padding: 15px; /* Adjust padding for footer */
+    }
+}
+
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 0; /* Remove default padding */
+    }
+
+    h1 {
+        font-size: 2.5rem; /* Smaller h1 font size */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Smaller h2 font size */
+    }
+
+    section {
+        padding: 50px 20px; /* Adjust padding for sections */
+    }
+
+    .navbar {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align to the start */
+    }
+
+    .navbar-left h1 {
+        font-size: 1.2rem; /* Smaller logo text */
+    }
+
+    .navbar-center,
+    .navbar-right {
+        margin-top: 80px;
+        display: none; /* Hide navbar items */
+        flex-direction: column; /* Stack items vertically */
+        width: 100%; /* Full width for dropdown */
+        position: absolute; /* Position it absolutely */
+    }
+
+    .navbar-center.show {
+        margin-top: 80px;
+    }
+
+    .navbar-center.show, 
+    .navbar-right.show{
+        display: flex;
+        flex-direction: row; /* Stack items horizontally */        
+        justify-content: center;
+        position:absolute; /* Position it absolutely */
+        background-color: rgba(51, 51, 51, 0.1); /* Semi-transparent background */
+        backdrop-filter: blur(7px);
+    }
+
+    .navbar-right.show {
+        margin-top: 137px;
+        float: right;
+    }
+
+    .navbar-toggle {
+        display: flex; /* Show toggle button */
+        background: transparent; /* No background */
+        border: none; /* No border */
+        color: white; /* Toggle button color */
+        cursor: pointer; /* Pointer cursor */
+        font-size: 1.5rem; /* Size of the toggle button */
+        padding-right: 20px;
+    }
+
+    .navbar-center li {
+        margin: 0 10px; /* Less space between menu items */
+    }
+
+    .navbar-center li a {
+        font-size: 1rem; /* Smaller menu item font size */
+    }
+
+    .btn {
+        padding: 8px 16px; /* Smaller button padding */
+        font-size: 1rem; /* Smaller button font size */
+    }
+
+    header#hero {
+        height: 60vh; /* Reduced height for mobile */
+    }
+
+    .about-content {
+        flex-direction: column; /* Stack columns vertically */
+    }
+    
+    .about-content-info {
+        flex-direction: column ;
+        flex-wrap: wrap ;
+        width: 100%;
+    }
+
+    .about-content-image {
+        width: 100%; /* Full width for the image on mobile */
+    }
+
+    .about-content-details {
+        width: 100%; /* Full width for text details */
+    }
+
+    .about-content-interest h3 {
+        padding-right: 10px;
+    }
+
+    .about-content-interest a {
+        width: 50px;
+        height: 50px;
+        padding: 5px;
+        margin-top: 5px;
+    }
+
+    .skills-half-left,
+    .skills-half-right {
+        flex: 0 0 100%; /* Full width for skills columns */
+    }
+
+    .resume-title-content,
+    .resume-content {
+        padding: 0; /* Reduce padding for resume sections */
+    }
+    
+    .resume-job-desc {
+        height: auto;
+        align-items: center;
+        padding: 5px;
+        flex-wrap: wrap;
+    }
+
+    .resume-job-desc span {
+        margin-top: 5px;
+    }
+
+    .resume-item {
+        padding-left: 20px; /* Space for the circle and line */
+    }
+
+    .contact-item {
+        flex-direction: row; /* Stack contact items horizontally */
+        align-items: center; /* Align text to center */
+    }
+
+    .contact-item i {
+        width: 40px; /* Adjust icon size */
+        height: 40px; /* Adjust icon size */
+        font-size: 20px; /* Adjust icon size */
+    }
+
+    /* Adjust footer for mobile */
+    footer {
+        padding: 20px 10px; /* Add padding for footer */
+    }
+}
+
+@media (min-width: 769px) {
+    .navbar-toggle {
+        display: none; /* Hide toggle button on desktop */
+    }
+}
+
+/* Additional Media Queries for smaller devices */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem; /* Further decrease h1 font size */
+    }
+
+    h2 {
+        font-size: 1.2rem; /* Further decrease h2 font size */
+    }
+
+    .btn {
+        padding: 6px 12px; /* Smaller button padding for extra small screens */
+        font-size: 0.9rem; /* Smaller button font size */
+    }
+
+    .navbar-left h1 {
+        font-size: 1.2rem; /* Smaller logo font size */
+    }
+
+    .navbar-center li a {
+        font-size: 0.9rem; /* Smaller menu item font size */
     }
 }
