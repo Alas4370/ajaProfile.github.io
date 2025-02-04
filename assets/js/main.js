@@ -129,11 +129,9 @@ toggleButton.addEventListener('click', () => {
 
 // Download PDF Resume
 function downloadPDF() {
-    const link = document.createElement('a');
-    link.href = 'https://alas4370.github.io/ajaProfile.github.io/assets/pdf/AJA_Resume.pdf'; // Replace with the actual path to your PDF file
-    link.download = 'AJA_Resume.pdf'; // Replace with the desired file name for download
-    link.click();
+    window.open('https://alas4370.github.io/ajaProfile.github.io/assets/pdf/AJA_Resume.pdf', '_blank');
 }
+
 
 // Function to animate percentage value
 function animatePercentage(element, targetValue) {
