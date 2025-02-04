@@ -4,7 +4,7 @@
 
     About Me: Learn about my professional background and interests.
     Skills: A detailed list of the technical skills I have acquired.
-    Contact: Get in touch with me through the provided contact form or social media links.
+    Contact: Get in touch with me through the provided contact section or social media links.
 
 💻 Technologies Used
 
