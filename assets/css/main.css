@@ -64,7 +64,7 @@ section {       /* Add spacing to the sections to avoid hiding content behind th
 
 /* NAVBAR */
 body.scrolled #navbar {         /* Optional: Change background color on scroll */
-    background-color: rgba(51, 51, 51, 0.5); /* Semi-transparent background after scroll */
+    background-color: #121212; 
     border-bottom: 1px solid #f03801; /* Add a color outline at the bottom */
 }
 
