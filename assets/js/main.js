@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.section-title'),
         document.querySelectorAll('#about .container p'),
         document.querySelectorAll('.resume-item'),
+        document.querySelectorAll('.resume-title'),
         document.querySelectorAll('.contact-wrap')
     ];
 
@@ -129,9 +130,11 @@ toggleButton.addEventListener('click', () => {
 
 // Download PDF Resume
 function downloadPDF() {
-    window.open('https://alas4370.github.io/ajaProfile.github.io/assets/pdf/AJA_Resume.pdf', '_blank');
+    const link = document.createElement('a');
+    link.href = 'https://alas4370.github.io/ajaProfile.github.io/assets/pdf/AJA_Resume.pdf'; // Replace with the actual path to your PDF file
+    link.download = 'AJA_Resume.pdf'; // Replace with the desired file name for download
+    link.click();
 }
-
 
 // Function to animate percentage value
 function animatePercentage(element, targetValue) {
@@ -147,21 +150,21 @@ function animatePercentage(element, targetValue) {
 }
 
 // Function to animate progress bar
-function animateProgressBar(element) {
-    const targetValue = element.getAttribute('data-progress');
-    const duration = targetValue * 0.02; // Transition duration proportional to the value
+// function animateProgressBar(element) {
+//     const targetValue = element.getAttribute('data-progress');
+//     const duration = targetValue * 0.02; // Transition duration proportional to the value
 
-    // Reset progress bar for animation
-    element.style.transition = 'none'; // Disable transition for reset
-    element.style.width = '0'; // Set width to 0 for reset
-    // Force reflow (flush CSS changes to make sure reset is applied)
-    element.offsetHeight; // Trigger a reflow to apply the width = 0
-    setTimeout(() => {
-        // Enable smooth transition again and animate to the target width
-        element.style.transition = `width ${duration}s ease`;
-        element.style.width = targetValue + '%'; // Animate to the target width
-    }, 100); // Delay to ensure reset is visible
-}
+//     // Reset progress bar for animation
+//     element.style.transition = 'none'; // Disable transition for reset
+//     element.style.width = '0'; // Set width to 0 for reset
+//     // Force reflow (flush CSS changes to make sure reset is applied)
+//     element.offsetHeight; // Trigger a reflow to apply the width = 0
+//     setTimeout(() => {
+//         // Enable smooth transition again and animate to the target width
+//         element.style.transition = `width ${duration}s ease`;
+//         element.style.width = targetValue + '%'; // Animate to the target width
+//     }, 100); // Delay to ensure reset is visible
+// }
 
 // Set up Intersection Observer
 const observer = new IntersectionObserver((entries, observer) => {
@@ -188,4 +191,55 @@ const observer = new IntersectionObserver((entries, observer) => {
 // Observe all progress elements
 document.querySelectorAll('.progress').forEach(progress => {
     observer.observe(progress);
+});
+
+
+// Bar Chart for Experience
+var xValues = ["PHP", "Laravel", "Javascript", "HTML", "CSS", "MySQL", "SAP", "Git"];
+var yValues = [18, 6, 18, 24, 24, 24, 17, 12];
+var barColors = "#f03801";
+
+new Chart("myChart", {
+    type: "horizontalBar",
+    data: {
+        labels: xValues,
+        datasets: [{
+            backgroundColor: barColors,
+            borderColor: "white",
+            borderWidth: 1,
+            data: yValues
+        }]
+    },
+    options: {
+        legend: { display: false },
+        title: {
+            display: true,
+            text: "Technical Skills (Months)",
+            fontColor: "white"
+        },
+        scales: {
+            xAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    max: 30,
+                    fontColor: "white"
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: "Months",
+                    fontColor: "white"
+                }
+            }],
+            yAxes: [{
+                ticks: {
+                    fontColor: "white"
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: "Technical Skills",
+                    fontColor: "white"
+                }
+            }]
+        }
+    }
 });
