@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-body {
+body, html {
     font-family: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     line-height: 1.6;
     margin: 0; /* Remove default margin */
@@ -15,10 +15,19 @@ body {
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent the image from repeating */
     background-attachment: fixed; /* Fix the background */
-    background-color: #f0f0f0; /* Fallback background color */
     font-weight: 100;
-}
+    width: 100%;
+    height: auto;
 
+}
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0; /* Particles stay at the bottom */
+}
 h1 {
     font-size: 4rem;
     color: #f03801;
