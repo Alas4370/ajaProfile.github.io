@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-body, html {
+body{
     font-family: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     line-height: 1.6;
     margin: 0; /* Remove default margin */
@@ -16,17 +16,6 @@ body, html {
     background-repeat: no-repeat; /* Prevent the image from repeating */
     background-attachment: fixed; /* Fix the background */
     font-weight: 100;
-    width: 100%;
-    height: auto;
-
-}
-#particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 0; /* Particles stay at the bottom */
 }
 h1 {
     font-size: 4rem;
