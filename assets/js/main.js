@@ -206,3 +206,18 @@ new Chart("myChart", {
         }
     }
 });
+particlesJS("particles-js", {
+    particles: {
+        number: { value: 80 },
+        size: { value: 1 },
+        move: { speed: 0.5 },
+        color: { value: "#ffffff" },
+        line_linked: { enable: false, distance: 300, color: "#ffffff" }
+    },
+    interactivity: {
+        detect_on: "canvas",
+        events: {
+            onclick: { enable: false } 
+        }
+    }
+});
